@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Page Title</title>
+    <link rel='stylesheet' href='main.css'>
+</head>
+<body>
+    <h1 style="text-align:center;">Catálogo de Videojuegos</h1>
+   
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Plataforma</th>
+                <th>Precio</th>
+                <th>Disponibilidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Tip para el maestro: th:each funciona exactamente igual a un for(Juego juego : juegos) en Java -->
+            <tr th:each="juego : ${juegos}">
+                <td th:text="${juego.titulo}">Juego Genérico</td>
+                <td th:text="${juego.genero}">Género Genérico</td>
+                <td th:text="${juego.plataforma}">Consola</td>
+               
+                <!-- Concatenación usando comillas simples para el símbolo $ y luego la variable -->
+                <td th:text="'$' + ${juego.precio}">0.00</td>
+               
+                <td>
+                    <!-- Tip para el maestro: th:if y th:unless son condicionales opuestos -->
+                    <!-- Solo se dibuja el span si 'disponible' es true -->
+                    <span th:if="${juego.disponible}" class="disponible">En Stock</span>
+                   
+                    <!-- Solo se dibuja el span si 'disponible' es false -->
+                    <span th:unless="${juego.disponible}" class="agotado">Agotado</span>
+                </td>
+            </tr>
+           
+            <!-- Tip para el maestro: #lists es otro objeto utilitario, muy útil para mostrar mensajes de listas vacías -->
+            <tr th:if="${#lists.isEmpty(juegos)}">
+                <td colspan="5" style="text-align: center;">No hay juegos disponibles en el catálogo en este momento.</td>
+            </tr>
+        </tbody>
+    </table>
+   
+    <div style="text-align:center; margin-top: 20px;">
+        <a th:href="@{/}">Volver al inicio</a>
+    </div>
+
+</body>
+</html>

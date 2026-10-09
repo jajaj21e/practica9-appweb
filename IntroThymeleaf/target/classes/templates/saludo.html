@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Saludo dimanico</title>
+    <link rel='stylesheet' href='main.css'>
+</head>
+<body>
+    <h1 th:text="${mensajeSaludo}" th:style="${claseCss}">Hola, ! Bienvenido.</h1>
+    <ul>
+        <li><strong>1. Session</strong><span th:text="${session.rol}"></span></li>
+        <li><strong>2. Parametros</strong><span th:text="${param.nombre !null? param.nombre:'Ninguno'}"></span></li>
+        <li><strong>3. Utilidades</strong>Fecha actual formateada<span th:text="${#dates.format(dates.createNow(),'dd/MM/yyyy')}"></span></li>
+</body>
+</html>

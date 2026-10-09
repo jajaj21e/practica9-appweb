@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inicio - Thymeleaf</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1 th:text="${mensajeBienvenida}">Bienvenido a mi aplicación web en Spring!</h1>
+    <p>Hola, <span th:text="${nombre}">nombre</span>! Bienvenido.</p>
+    <hr>
+    <h3>Lista de elementos:</h3>
+    <ul>
+        <li><a href="@{/saludo}">ver saludo dinamico</a></li>
+        <li><a href="@{/catalogo}">Ver catálogo de videojuegos</a></li>
+    </ul>
+</body>
+</html>
